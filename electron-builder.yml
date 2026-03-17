@@ -1,0 +1,33 @@
+appId: "com.velo.downloader"
+productName: "Velo"
+directories:
+  output: "dist"
+  buildResources: "resources"
+files:
+  - ".next/**/*"
+  - "electron/**/*"
+  - "package.json"
+  - "public/**/*"
+extraResources:
+  - from: "resources/bin"
+    to: "bin"
+    filter:
+      - "**/*"
+
+win:
+  target:
+    - target: "nsis"
+      arch:
+        - "x64"
+  icon: "public/favicon.ico"
+
+mac:
+  target:
+    - "dmg"
+  category: "public.app-category.utilities"
+  icon: "public/favicon.icns"
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  perMachine: true
