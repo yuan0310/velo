@@ -19,13 +19,27 @@ win:
     - target: "nsis"
       arch:
         - "x64"
-  icon: "public/favicon.ico"
+  icon: "src/app/favicon.ico"
 
 mac:
   target:
-    - "dmg"
+    - target: "dmg"
+      arch:
+        - "x64"
+        - "arm64"
   category: "public.app-category.utilities"
-  icon: "public/favicon.icns"
+  icon: "src/app/favicon.ico"
+  artifactName: "Velo-${version}-${arch}.${ext}"
+
+dmg:
+  title: "Velo ${version}"
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
 
 nsis:
   oneClick: false
