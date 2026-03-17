@@ -10,6 +10,7 @@ permissions:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: windows-latest
@@ -31,6 +32,21 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      # Download platform-specific binaries for macOS
+      - name: Download macOS binaries
+        if: matrix.platform == 'mac'
+        run: |
+          rm -f resources/bin/*.exe resources/bin/*.txt
+          
+          # Download yt-dlp for macOS
+          curl -L -o resources/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos
+          chmod +x resources/bin/yt-dlp
+          
+          # Download ffmpeg for macOS
+          curl -L -o /tmp/ffmpeg.zip https://evermeet.cx/ffmpeg/getrelease/zip
+          unzip -o /tmp/ffmpeg.zip -d resources/bin/
+          chmod +x resources/bin/ffmpeg
 
       - name: Build Next.js
         run: npm run build
