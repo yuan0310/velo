@@ -129,7 +129,7 @@
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap" id="download">
             <!-- Windows Download Button -->
-            <a href="https://github.com/yuan0310/velo/releases/download/V3.5.0/Velo.Setup.3.5.0.exe" 
+            <a href="https://github.com/yuan0310/velo/releases/download/V3.5.0/Velo-Setup-3.5.0.exe" 
                class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.7)] group">
                 <svg class="w-5 h-5 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
@@ -137,13 +137,19 @@
                 <span data-i18n="btn_download">下載 Velo for Windows</span>
             </a>
 
-            <!-- macOS Download Button -->
-            <a href="https://github.com/yuan0310/velo/releases/latest" target="_blank"
+            <!-- macOS Intel Button -->
+            <a href="https://github.com/yuan0310/velo/releases/download/V3.5.0/Velo-3.5.0-x64.dmg" 
                class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(156,163,175,0.3)] hover:shadow-[0_0_30px_rgba(156,163,175,0.5)] group">
                 <svg class="w-5 h-5 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
-                <span data-i18n="btn_download_mac">下載 Velo for macOS</span>
+                <span data-i18n="btn_download_mac_intel">下載 for Mac (Intel)</span>
+            </a>
+
+            <!-- macOS Apple Silicon Button -->
+            <a href="https://github.com/yuan0310/velo/releases/download/V3.5.0/Velo-3.5.0-arm64.dmg" 
+               class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(156,163,175,0.3)] hover:shadow-[0_0_30px_rgba(156,163,175,0.5)] group">
+                <span data-i18n="btn_download_mac_m1">下載 for Mac (Apple Silicon)</span>
             </a>
             
             <!-- GitHub Button -->
@@ -237,8 +243,9 @@
                 hero_title_1: "次世代極速",
                 hero_title_2: "影片下載神器",
                 hero_desc: "完全免費、無廣告的單機版軟體。支援最高 4K Ultra HD 畫質，內建 Bypass 突破頻寬限制技術，結合 NVIDIA 硬體加速，為您帶來前所未有的極致下載體驗。",
-                btn_download: "下載 Velo for Windows",
-                btn_download_mac: "下載 Velo for macOS",
+                btn_download: "下載為 Windows (.exe)",
+                btn_download_mac_intel: "下載為 Mac Intel (.dmg)",
+                btn_download_mac_m1: "下載為 Mac M1/M2/M3 (.dmg)",
                 btn_github: "查看開源專案",
                 hero_reqs: "支援 Windows 10/11 x64 · macOS 12+ (Intel/Apple Silicon) · 免費開源",
                 feat1_title: "突破限速",
@@ -264,8 +271,9 @@
                 hero_title_1: "Next-Gen Velocity",
                 hero_title_2: "Video Downloader",
                 hero_desc: "Completely free, ad-free standalone software. Download up to 4K Ultra HD quality with built-in Bypass Engine and NVIDIA Hardware Acceleration for the ultimate experience.",
-                btn_download: "Download Velo for Windows",
-                btn_download_mac: "Download Velo for macOS",
+                btn_download: "Download for Windows (.exe)",
+                btn_download_mac_intel: "Download for Mac Intel (.dmg)",
+                btn_download_mac_m1: "Download for Mac M1/M2/M3 (.dmg)",
                 btn_github: "View on GitHub",
                 hero_reqs: "Windows 10/11 x64 · macOS 12+ (Intel/Apple Silicon) · Free & Open Source",
                 feat1_title: "Bypass Throttling",
