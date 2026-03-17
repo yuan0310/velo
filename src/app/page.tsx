@@ -32,7 +32,7 @@ export default function Home() {
   const [startTime, setStartTime] = useState("00:00:00");
   const [endTime, setEndTime] = useState("");
   const [format, setFormat] = useState("mp4"); // mp4, aiff
-  const [resolution, setResolution] = useState("1080p");
+  const [resolution, setResolution] = useState("2160p");
 
   // Queue of downloads
   const [downloads, setDownloads] = useState<DownloadItem[]>([]);
@@ -411,7 +411,9 @@ export default function Home() {
                             onChange={(e) => setResolution(e.target.value)}
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:border-blue-500 outline-none appearance-none cursor-pointer"
                           >
-                            <option value="1080p">1080p HD</option>
+                            <option value="2160p">2160p 4K Ultra HD</option>
+                            <option value="1440p">1440p 2K QHD</option>
+                            <option value="1080p">1080p Full HD</option>
                             <option value="720p">720p HD</option>
                             <option value="480p">480p SD</option>
                           </select>

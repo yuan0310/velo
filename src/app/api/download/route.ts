@@ -59,10 +59,10 @@ async function handleDownloadRequest(data: any) {
                 // or we use a more complex "try-start" logic.
                 // Given the requirement to "WOW" but be stable, we'll stick to nvenc but ensure it's configured well.
                 videoEncoder = "h264_nvenc";
-                qualityArgs = ["-preset", "p4", "-tune", "hq", "-rc", "vbr", "-cq", "20", "-b:v", "0", "-maxrate:v", "20M", "-bufsize:v", "40M", "-profile:v", "high"];
+                qualityArgs = ["-preset", "p4", "-tune", "hq", "-rc", "vbr", "-cq", "20", "-b:v", "0", "-maxrate:v", "50M", "-bufsize:v", "100M", "-profile:v", "high"];
             } else if (platform === "darwin") {
                 videoEncoder = "h264_videotoolbox";
-                qualityArgs = ["-b:v", "8M", "-profile:v", "high"];
+                qualityArgs = ["-b:v", "20M", "-profile:v", "high"];
             }
 
             ffmpegArgs.push("-i", "pipe:0");
