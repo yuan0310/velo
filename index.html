@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velo - 次世代極速影片下載神器</title>
+    <meta name="description" content="Velo 是一款結合硬體加速、支援 GPU 轉碼的高速影音下載工具。無懼限速，一鍵下載最高畫質。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        foreground: '#ededed',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'radial-gradient(circle at top center, rgba(59, 130, 246, 0.15) 0%, transparent 70%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Custom Glassmorphism Utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* AdSense Placeholder Styling */
+        .ad-container {
+            width: 100%;
+            max-width: 728px;
+            min-height: 90px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.875rem;
+        }
+
+        /* Language Toggle Button Animation */
+        .lang-switch {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .lang-switch:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-foreground min-h-screen hero-gradient selection:bg-primary/30 selection:text-white pb-20">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b-0 border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">Velo</span>
+                </div>
+                <div class="flex flex-row items-center gap-6">
+                    <a href="#download" class="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200" data-i18n="nav_download">
+                        立即下載
+                    </a>
+                    <button onclick="toggleLanguage()" class="lang-switch text-xs font-bold px-3 py-1.5 rounded-full border border-white/20 bg-white/5 text-white/80 hover:text-white flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                        <span id="current-lang">EN</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top AdSense Placement (Above Fold) -->
+    <div class="pt-24 pb-8 px-4">
+        <!-- Google AdSense - Top Banner -->
+        <!-- Replace the contents of this div with your <ins> AdSense code -->
+        <div class="ad-container" id="ad-top">
+            <span data-i18n="ad_top">[ 廣告版位 - 首屏橫幅 (建議 728x90) ]<br>此處替換為 Google AdSense 代碼</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm mb-8 animate-fade-in-up">
+            <span class="flex h-2 w-2 rounded-full bg-accent"></span>
+            <span data-i18n="hero_badge">v3.3.0 全新發布 - 極致瘦身與提速版，檔案大減 50%</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+            <span data-i18n="hero_title_1">次世代極速</span> <br class="hidden sm:block">
+            <span class="gradient-text" data-i18n="hero_title_2">影片下載神器</span>
+        </h1>
+        
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10" data-i18n="hero_desc">
+            完全免費、無廣告的單機版軟體。內建 Bypass 突破頻寬限制技術，結合 NVIDIA 硬體加速，為您帶來前所未有的極致下載體驗。
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center" id="download">
+            <!-- Download Button -->
+            <!-- Update the href to your GitHub Releases link later -->
+            <a href="https://github.com/yuan0310/velo/releases/download/V3.3.0/Velo.Setup.3.3.0.exe" 
+               class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.7)] group">
+                <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                </svg>
+                <span data-i18n="btn_download">下載 Velo for Windows</span>
+            </a>
+            
+            <a href="https://github.com/yuan0310/velo" target="_blank"
+               class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium text-white glass hover:bg-white/10 rounded-xl transition-all duration-200">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                </svg>
+                <span data-i18n="btn_github">查看開源專案</span>
+            </a>
+        </div>
+        <p class="mt-4 text-sm text-gray-500" data-i18n="hero_reqs">支援 Windows 10/11 x64 · 檔案大小約 259MB</p>
+    </main>
+
+    <!-- Features Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3" data-i18n="feat1_title">突破限速</h3>
+                <p class="text-gray-400" data-i18n="feat1_desc">內建最佳化 10M 區塊並發引擎，繞過各大平台的限速機制，享受用滿光纖頻寬的快感。</p>
+            </div>
+            <div class="glass p-8 rounded-2xl border border-accent/20">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3" data-i18n="feat2_title">GPU 硬體加速</h3>
+                <p class="text-gray-400" data-i18n="feat2_desc">專為 NVIDIA 顯示卡最佳化，啟用 NVENC 高效轉碼，大幅減少 CPU 負載與轉檔時間。</p>
+            </div>
+            <div class="glass p-8 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3" data-i18n="feat3_title">隱私與安全</h3>
+                <p class="text-gray-400" data-i18n="feat3_desc">單機離線架構，不需將連結傳送至第三方伺服器，您的下載紀錄完全留在自己的電腦中。</p>
+            </div>
+        </div>
+    <!-- Bug Report Section -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="report">
+        <div class="glass p-8 md:p-12 rounded-3xl text-center relative overflow-hidden text-left">
+            <!-- Decorative blur -->
+            <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+            
+            <h2 class="text-3xl font-bold mb-3" data-i18n="report_title">遇到問題了嗎？</h2>
+            <p class="text-gray-400 mb-8" data-i18n="report_desc">如果您遇到 YouTube 突然無法下載、報錯，或是發現任何 Bug，歡迎隨時回報給我們！</p>
+            
+            <!-- Replace YOUR_EMAIL with a Formspree hash if preferred later, or leave generic info -->
+            <form action="https://formspree.io/f/xbjnrvqa" method="POST" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-1" data-i18n="form_name">您的暱稱 (選填)</label>
+                        <input type="text" name="name" id="name" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="..." data-i18n-placeholder="form_name_ph">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1" data-i18n="form_email">Email (若需我們回覆)</label>
+                        <input type="email" name="email" id="email" class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="your@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-300 mb-1" data-i18n="form_msg">問題詳細描述 *</label>
+                    <textarea name="message" id="message" rows="4" required class="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="..." data-i18n-placeholder="form_msg_ph"></textarea>
+                </div>
+                <button type="submit" class="w-full sm:w-auto px-8 py-3 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors duration-200 mt-4" data-i18n="form_btn">
+                    發送回報
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Mid AdSense Placement (In-content) -->
+    <div class="py-12 px-4">
+        <div class="ad-container" style="min-height: 250px;" id="ad-mid">
+            <span data-i18n="ad_mid">[ 廣告版位 - 內容區塊 (建議 300x250 或回應式) ]<br>賺取廣告收益的最佳放置點</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 mt-16 pt-8 pb-8 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Velo Open Source Project. All rights reserved.</p>
+    </footer>
+
+    <!-- i18n Script -->
+    <script>
+        const translations = {
+            tw: {
+                nav_download: "立即下載",
+                ad_top: "[ 廣告版位 - 首屏橫幅 (建議 728x90) ]<br>此處替換為 Google AdSense 代碼",
+                hero_badge: "v3.3.0 全新發布 - 極致瘦身與提速版，檔案大減 50%",
+                hero_title_1: "次世代極速",
+                hero_title_2: "影片下載神器",
+                hero_desc: "完全免費、無廣告的單機版軟體。內建 Bypass 突破頻寬限制技術，結合 NVIDIA 硬體加速，為您帶來前所未有的極致下載體驗。",
+                btn_download: "下載 Velo for Windows",
+                btn_github: "查看開源專案",
+                hero_reqs: "支援 Windows 10/11 x64 · 檔案大小約 259MB",
+                feat1_title: "突破限速",
+                feat1_desc: "內建最佳化 10M 區塊並發引擎，繞過各大平台的限速機制，享受用滿光纖頻寬的快感。",
+                feat2_title: "GPU 硬體加速",
+                feat2_desc: "專為 NVIDIA 顯示卡最佳化，啟用 NVENC 高效轉碼，大幅減少 CPU 負載與轉檔時間。",
+                feat3_title: "隱私與安全",
+                feat3_desc: "單機離線架構，不需將連結傳送至第三方伺服器，您的下載紀錄完全留在自己的電腦中。",
+                report_title: "遇到問題了嗎？",
+                report_desc: "如果您遇到 YouTube 突然無法下載、報錯，或是發現任何 Bug，歡迎隨時回報給我們！",
+                form_name: "您的暱稱 (選填)",
+                form_name_ph: "例如：下載狂人",
+                form_email: "Email (若需我們回覆)",
+                form_msg: "問題詳細描述 *",
+                form_msg_ph: "請描述您遇到的錯誤訊息，如果能附上下載失敗的影片網址更好！",
+                form_btn: "發送回報",
+                ad_mid: "[ 廣告版位 - 內容區塊 (建議 300x250 或回應式) ]<br>賺取廣告收益的最佳放置點"
+            },
+            en: {
+                nav_download: "Download Now",
+                ad_top: "[ Ad Slot - Top Banner (728x90) ]<br>Replace this with AdSense Code",
+                hero_badge: "v3.3.0 Released - Extremely debloated and fast. 50% smaller!",
+                hero_title_1: "Next-Gen Velocity",
+                hero_title_2: "Video Downloader",
+                hero_desc: "Completely free, ad-free standalone software. Built-in Bypass Engine combined with NVIDIA Hardware Acceleration for the ultimate download experience.",
+                btn_download: "Download Velo for Windows",
+                btn_github: "View on GitHub",
+                hero_reqs: "Supports Windows 10/11 x64 · Approx 259MB",
+                feat1_title: "Bypass Throttling",
+                feat1_desc: "Optimized 10M concurrent chunk engine that easily bypasses platform rate-limits, flooding your entire fiber bandwidth.",
+                feat2_title: "GPU Acceleration",
+                feat2_desc: "Optimized for NVIDIA GPUs utilizing NVENC high-efficiency transcoding, freeing up CPU load completely.",
+                feat3_title: "Privacy First",
+                feat3_desc: "A fully standalone offline architecture. None of your links are ever sent to our backend servers. What you download stays on your PC.",
+                report_title: "Ran into an issue?",
+                report_desc: "If YouTube suddenly refuses to download, throws an error, or if you found any bugs, let us know!",
+                form_name: "Your Name (Optional)",
+                form_name_ph: "e.g. Video Maniac",
+                form_email: "Email (If reply needed)",
+                form_msg: "Please describe the issue *",
+                form_msg_ph: "Describe the error you saw, and please attach the video URL if possible!",
+                form_btn: "Send Report",
+                ad_mid: "[ Ad Slot - Mid Content (300x250) ]<br>Best spot for AdSense revenue"
+            }
+        };
+
+        let currentLang = 'tw';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'tw' ? 'en' : 'tw';
+            
+            // Update button text
+            document.getElementById('current-lang').innerText = currentLang.toUpperCase();
+            
+            // Update document language
+            document.documentElement.lang = currentLang === 'tw' ? 'zh-TW' : 'en';
+
+            // Update all innerHTML
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            // Update all placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[currentLang][key]) {
+                    el.placeholder = translations[currentLang][key];
+                }
+            });
+        }
+        
+        // Ensure starting language state matches inputs
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('name').placeholder = translations.tw.form_name_ph;
+            document.getElementById('message').placeholder = translations.tw.form_msg_ph;
+        });
+    </script>
+</body>
+</html>
