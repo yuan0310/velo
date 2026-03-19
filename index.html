@@ -115,7 +115,7 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm mb-8 animate-fade-in-up">
             <span class="flex h-2 w-2 rounded-full bg-accent"></span>
-            <span data-i18n="hero_badge">v3.5 全新發布 - 支援 4K Ultra HD 下載，極致畫質體驗</span>
+            <span data-i18n="hero_badge">v3.5.1 全新發布 - 支援 4K 下載與 macOS 相容性優化</span>
         </div>
         
         <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
@@ -129,7 +129,7 @@
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap" id="download">
             <!-- Windows Download Button -->
-            <a href="https://github.com/yuan0310/velo/releases/download/v3.5.0/Velo-Setup-3.5.0.exe" 
+            <a href="https://github.com/yuan0310/velo/releases/download/v3.5.1/Velo-Setup-3.5.1.exe" 
                class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-blue-600 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:shadow-[0_0_30px_rgba(59,130,246,0.7)] group">
                 <svg class="w-5 h-5 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
@@ -138,19 +138,25 @@
             </a>
 
             <!-- macOS Intel Button -->
-            <a href="https://github.com/yuan0310/velo/releases/download/v3.5.0/Velo-3.5.0-x64.dmg" 
-               class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(156,163,175,0.3)] hover:shadow-[0_0_30px_rgba(156,163,175,0.5)] group">
-                <svg class="w-5 h-5 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                <span data-i18n="btn_download_mac_intel">下載 for Mac (Intel)</span>
-            </a>
+            <div class="flex flex-col gap-2">
+                <a href="https://github.com/yuan0310/velo/releases/download/v3.5.1/Velo-3.5.1-x64.dmg" 
+                   class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(156,163,175,0.3)] hover:shadow-[0_0_30px_rgba(156,163,175,0.5)] group">
+                    <svg class="w-5 h-5 group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span data-i18n="btn_download_mac_intel">下載 for Mac (Intel)</span>
+                </a>
+                <a href="https://github.com/yuan0310/velo/releases/download/v3.5.1/Velo-3.5.1-x64.zip" class="text-[10px] text-gray-500 hover:text-white transition-colors underline" data-i18n="btn_zip_intel">備用下載 (Intel .zip)</a>
+            </div>
 
             <!-- macOS Apple Silicon Button -->
-            <a href="https://github.com/yuan0310/velo/releases/download/v3.5.0/Velo-3.5.0-arm64.dmg" 
-               class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(156,163,175,0.3)] hover:shadow-[0_0_30px_rgba(156,163,175,0.5)] group">
-                <span data-i18n="btn_download_mac_m1">下載 for Mac (Apple Silicon)</span>
-            </a>
+            <div class="flex flex-col gap-2">
+                <a href="https://github.com/yuan0310/velo/releases/download/v3.5.1/Velo-3.5.1-arm64.dmg" 
+                   class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-xl transition-all duration-200 shadow-[0_0_20px_rgba(156,163,175,0.3)] hover:shadow-[0_0_30px_rgba(156,163,175,0.5)] group">
+                    <span data-i18n="btn_download_mac_m1">下載 for Mac (Apple Silicon)</span>
+                </a>
+                <a href="https://github.com/yuan0310/velo/releases/download/v3.5.1/Velo-3.5.1-arm64.zip" class="text-[10px] text-gray-500 hover:text-white transition-colors underline" data-i18n="btn_zip_m1">備用下載 (Apple Silicon .zip)</a>
+            </div>
             
             <!-- GitHub Button -->
             <a href="https://github.com/yuan0310/velo" target="_blank"
@@ -226,6 +232,19 @@
         <div class="ad-container" style="min-height: 250px;" id="ad-mid">
             <span data-i18n="ad_mid">[ 廣告版位 - 內容區塊 (建議 300x250 或回應式) ]<br>賺取廣告收益的最佳放置點</span>
         </div>
+
+        <!-- macOS Troubleshooting -->
+        <div class="mt-8 p-6 rounded-2xl bg-white/5 border border-white/10 text-left max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.6s">
+            <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                <span data-i18n="mac_warning_title">💡 macOS 安裝提示：若顯示「檔案損毀」</span>
+            </h3>
+            <p class="text-sm text-gray-400 mb-4" data-i18n="mac_warning_desc">
+                由於 Velo 為獨立開發者的開源軟體，尚未購買 Apple 昂貴的開發者憑證進行簽章。若您的系統顯示「檔案損毀」或「無法驗證開發者」，請開啟「終端機 (Terminal)」並輸入以下指令後按回車即可正常開啟：
+            </p>
+            <div class="bg-black/40 p-4 rounded-xl border border-white/5 font-mono text-xs text-blue-400 select-all overflow-x-auto">
+                <code data-i18n="mac_warning_cmd">sudo xattr -rd com.apple.quarantine /Applications/Velo.app</code>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -239,15 +258,20 @@
             tw: {
                 nav_download: "立即下載",
                 ad_top: "[ 廣告版位 - 首屏橫幅 (建議 728x90) ]<br>此處替換為 Google AdSense 代碼",
-                hero_badge: "v3.5 全新發布 - 支援 4K Ultra HD 下載，極致畫質體驗",
+                hero_badge: "v3.5.1 全新發布 - 支援 4K 下載與 macOS 相容性優化",
                 hero_title_1: "次世代極速",
                 hero_title_2: "影片下載神器",
                 hero_desc: "完全免費、無廣告的單機版軟體。支援最高 4K Ultra HD 畫質，內建 Bypass 突破頻寬限制技術，結合 NVIDIA 硬體加速，為您帶來前所未有的極致下載體驗。",
                 btn_download: "下載為 Windows (.exe)",
                 btn_download_mac_intel: "下載為 Mac Intel (.dmg)",
                 btn_download_mac_m1: "下載為 Mac M1/M2/M3 (.dmg)",
+                btn_zip_intel: "備用下載 (Intel .zip)",
+                btn_zip_m1: "備用下載 (Apple Silicon .zip)",
                 btn_github: "查看開源專案",
                 hero_reqs: "支援 Windows 10/11 x64 · macOS 12+ (Intel/Apple Silicon) · 免費開源",
+                mac_warning_title: "💡 macOS 安裝提示：若顯示「檔案損毀」",
+                mac_warning_desc: "由於 Velo 為獨立開發者的開源軟體，尚未購買 Apple 昂貴的開發者憑證進行簽章。若您的系統顯示「檔案損毀」或「無法驗證開發者」，請開啟「終端機 (Terminal)」並輸入以下指令後按回車即可正常開啟：",
+                mac_warning_cmd: "sudo xattr -rd com.apple.quarantine /Applications/Velo.app",
                 feat1_title: "突破限速",
                 feat1_desc: "內建最佳化 10M 區塊並發引擎，繞過各大平台的限速機制，享受用滿光纖頻寬的快感。",
                 feat2_title: "GPU 硬體加速",
@@ -267,15 +291,20 @@
             en: {
                 nav_download: "Download Now",
                 ad_top: "[ Ad Slot - Top Banner (728x90) ]<br>Replace this with AdSense Code",
-                hero_badge: "v3.5 Released - Now with 4K Ultra HD download support!",
+                hero_badge: "v3.5.1 Released - 4K support & macOS compatibility fixes",
                 hero_title_1: "Next-Gen Velocity",
                 hero_title_2: "Video Downloader",
                 hero_desc: "Completely free, ad-free standalone software. Download up to 4K Ultra HD quality with built-in Bypass Engine and NVIDIA Hardware Acceleration for the ultimate experience.",
                 btn_download: "Download for Windows (.exe)",
                 btn_download_mac_intel: "Download for Mac Intel (.dmg)",
                 btn_download_mac_m1: "Download for Mac M1/M2/M3 (.dmg)",
+                btn_zip_intel: "Backup Download (Intel .zip)",
+                btn_zip_m1: "Backup Download (Apple Silicon .zip)",
                 btn_github: "View on GitHub",
                 hero_reqs: "Windows 10/11 x64 · macOS 12+ (Intel/Apple Silicon) · Free & Open Source",
+                mac_warning_title: "💡 macOS Installation Tip: If 'File is Damaged'",
+                mac_warning_desc: "Velo is an indie open-source tool and isn't digitally signed with an Apple Dev certificate yet. If you see a 'Damaged' or 'Unverified Developer' warning, open Terminal and run the following command to trust the app:",
+                mac_warning_cmd: "sudo xattr -rd com.apple.quarantine /Applications/Velo.app",
                 feat1_title: "Bypass Throttling",
                 feat1_desc: "Optimized 10M concurrent chunk engine that easily bypasses platform rate-limits, flooding your entire fiber bandwidth.",
                 feat2_title: "GPU Acceleration",
